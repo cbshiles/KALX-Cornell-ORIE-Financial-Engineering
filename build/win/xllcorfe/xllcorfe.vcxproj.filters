@@ -13,24 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="math">
-      <UniqueIdentifier>{9cd19f7f-35c7-4f2b-ab51-c704a3a3e817}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="math\prob">
-      <UniqueIdentifier>{222e2484-a084-454d-b77c-6104231de57a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="xllcorfe.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="math\prob\xllnormal.cpp">
-      <Filter>math\prob</Filter>
-    </ClCompile>
-    <ClCompile Include="timer.cpp">
+    <ClCompile Include="..\..\..\xll\math\prob\xllprob.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\xll\xllcorfe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
