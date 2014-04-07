@@ -1,1 +1,0 @@
-Blach-Scholes/Merton model

@@ -24,6 +24,9 @@
     <ClInclude Include="xllcorfe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\math\stat\combinatorics.h">
+      <Filter>math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="math\prob\xllnormal.cpp">

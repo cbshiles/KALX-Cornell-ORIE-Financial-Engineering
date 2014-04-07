@@ -2,6 +2,15 @@
 
 TARGET=test_normal_pdf
 
+# table of pdf values
+bc -l > ${TARGET}.dat <<EoF
+pi = 4*a(1)
+sqrt2pi = sqrt(2*pi)
+for (x = -8; x < 8; x += 0.01) {
+	print "{", x, ", ", e(-x*x/2)/sqrt2pi, "},\n"
+}
+EoF
+
 cat > ${TARGET}.cpp <<EoF
 // ${TARGET}.cpp - test normal::pdf
 #include <iostream>
@@ -11,25 +20,20 @@ cat > ${TARGET}.cpp <<EoF
 template<class X>
 void ${TARGET}(void)
 {
-	double y0, y1;
-	double eps = std::numeric_limits<X>::epsilon();
-	corfe::prob::normal<X> n;
-EoF
+	X y;
+	X eps = std::numeric_limits<X>::epsilon();
+	prob::normal<X> n;
 
-bc -l >> ${TARGET}.cpp <<EoF
-pi = 4*a(1)
-sqrt2pi = sqrt(2*pi)
-for (x = -8; x < 8; x += 0.01) {
-	print "\ty0 = n.pdf(", x, ");\n"
-	print "\ty1 = ", e(-x*x/2)/sqrt2pi, ";\n"
-	print "\tensure (static_cast<X>(fabs(y0 - y1) < eps));\n"
-}
-EoF
-
-cat >> ${TARGET}.cpp <<EoF
+	struct { X x, y; } ${TARGET}_dat[] = {
+#include "${TARGET}.dat"
+	};
+	for (auto xy : ${TARGET}_dat) {
+		y = n.pdf(xy.x);
+		ensure (static_cast<X>(fabs(y - xy.y) < eps));
+	}
 }
 
-void test_normal_pdf(void)
+void ${TARGET}(void)
 {
 	${TARGET}<float>();
 	${TARGET}<double>();

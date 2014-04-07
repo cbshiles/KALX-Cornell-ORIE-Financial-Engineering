@@ -2,21 +2,8 @@
 
 TARGET=test_normal_cdf
 
-cat > ${TARGET}.cpp <<EoF
-// ${TARGET}.cpp - test normal::cdf
-#include <iostream>
-#include <limits>
-#include "../normal.h"
-
-template<class X>
-void ${TARGET}(void)
-{
-	double y0, y1;
-	double eps = std::numeric_limits<X>::epsilon();
-	corfe::prob::normal<X> n;
-EoF
-
-bc -l >> ${TARGET}.cpp <<EoF
+bc -l > ${TARGET}.dat <<EoF
+scale=32
 const=0.5*l(8*a(1))
 define phi(x) {
     auto s,t,b,q,i
@@ -26,13 +13,32 @@ define phi(x) {
     return (.5+s*e(-.5*q-const))
 }
 for (x = -8; x < 8; x += 0.01) {
-	print "\ty0 = n.cdf(", x, ");\n"
-	print "\ty1 = ", phi(x), ";\n"
-	print "\tensure (static_cast<X>(fabs(y0 - y1) < eps));\n"
+	print "{", x, ", ", phi(x), "},\n"
 }
 EoF
 
-cat >> ${TARGET}.cpp <<EoF
+cat > ${TARGET}.cpp <<EoF
+// ${TARGET}.cpp - test normal::cdf
+#include <iostream>
+#include <limits>
+#include "../normal.h"
+
+template<class X>
+void ${TARGET}(void)
+{
+	X y;
+	X eps = std::numeric_limits<X>::epsilon();
+	prob::normal<X> n;
+
+	struct { X x, y; } ${TARGET}_dat[] = {
+#include "${TARGET}.dat"
+	};
+	for (auto xy : ${TARGET}_dat) {
+		y = n.cdf(xy.x);
+		ensure (static_cast<X>(fabs(y - xy.y) < 10*eps));
+		y = erfc(-xy.x/M_SQRT2)/2;
+		ensure (static_cast<X>(fabs(y - xy.y) < 2*eps));
+	}
 }
 
 void ${TARGET}(void)

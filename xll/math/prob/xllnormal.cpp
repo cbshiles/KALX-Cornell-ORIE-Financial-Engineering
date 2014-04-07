@@ -1,8 +1,7 @@
-// xllprob.cpp - probability related functions
+// xllnormal.cpp - normal distrbution
 #include "xll/xllcorfe.h"
 #include "math/prob/normal.h"
 
-using namespace corfe;
 using namespace xll;
 
 static AddInX xai_normal_pdf(
@@ -29,4 +28,26 @@ double WINAPI xll_normal_cdf(double x)
 {
 #pragma XLLEXPORT
 	return prob::normal<>().cdf(x);
+}
+
+static AddInX xai_normal_inv(
+	FunctionX(XLL_DOUBLEX, _T("?xll_normal_inv"), CATEGORY_PREFIX _T("NORMAL.INV"))
+	.Num(_T("x"), _T("is a number."))
+	.Category(CATEGORY)
+	.ThreadSafe()
+	.FunctionHelp(_T("Return the inverse of the standard normal cumulative distribution function."))
+);
+double WINAPI xll_normal_inv(double x)
+{
+#pragma XLLEXPORT
+	double_ i;
+
+	try {
+		i = prob::normal<>().inv(x);
+	}
+	catch (const std::exception& ex) {
+		XLL_ERROR(ex.what());
+	}
+
+	return i;
 }
