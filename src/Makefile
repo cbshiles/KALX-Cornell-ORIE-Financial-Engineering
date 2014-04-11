@@ -1,4 +1,3 @@
-
 PROJS = math # ...
 
 .PHONY: all $(PROJS)
@@ -6,4 +5,4 @@ PROJS = math # ...
 all: $(PROJS)
 
 $(PROJS):
-	$(MAKE) -C $@
+	$(MAKE) -C "$@" $(MAKECMDGOALS)

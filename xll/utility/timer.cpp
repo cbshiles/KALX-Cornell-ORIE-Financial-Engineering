@@ -1,6 +1,6 @@
 // timer.cpp - time a cell
 #include "include/timer.h"
-#include "../../xll8/xll/xll.h"
+#include "../xll8/xll/xll.h"
 
 using namespace xll;
 

@@ -3,7 +3,7 @@
 #include <cmath>
 #include <functional>
 #include <vector>
-#include "../stat/combinatorics.h"
+#include "include/ensure.h"
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -48,34 +48,7 @@ namespace prob {
 		// See papers/dominici-invnormal.pdf
 		X inv(const X& x)
 		{
-			// C[n+1] = sum 0<=j<n choose(n, j+1) C[j] C[n-j]
-			std::function<unsigned long long(size_t)> C = [&](size_t n) {
-				typedef unsigned long long ullong;
-				static std::vector<ullong> c{0,1};
-				using combinatorics::choose;
-
-				if (n >= c.size()) {
-					ullong Cn(0);
-					for (size_t j = 0; j < n; ++j) {
-						Cn += choose(n - 1, j + 1)*C(j)*C(n - 1 - j);
-					}
-					ensure (c.size() == n);
-					c.push_back(Cn);
-				}
-
-				return c[n];
-			};
-			auto C_ = [&C](size_t n) {
-				return C(n)/combinatorics::factorial(n);
-			};
-
-			// sum n>0 C_2n+1/(2n + 1)! (sqrt(2pi)(x - 1/2)^(2n + 1)
-			X s=M_SQRT2PI*(x-.5),t = 0;
-			long double b=s,q=b*b,i=1;
-			while (s != t)
-				s = (t = s)+C_(i+=2)*(b*=q);
-
-			return s;
+			return x;
 		}
 	private:
 		X z(const X& x) const

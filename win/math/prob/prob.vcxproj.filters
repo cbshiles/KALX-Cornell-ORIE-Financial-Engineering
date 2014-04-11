@@ -13,36 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="math">
-      <UniqueIdentifier>{9cd19f7f-35c7-4f2b-ab51-c704a3a3e817}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="math\prob">
-      <UniqueIdentifier>{222e2484-a084-454d-b77c-6104231de57a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="utility">
-      <UniqueIdentifier>{6a7aad3a-6c4e-4659-a8d3-d1fd139ce125}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="xllcorfe.h">
+    <ClInclude Include="..\..\..\math\prob\normal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\math\stat\combinatorics.h">
-      <Filter>math</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="math\prob\xllnormal.cpp">
-      <Filter>math\prob</Filter>
+    <ClCompile Include="..\..\..\math\prob\test\test_normal_cdf.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="utility\timer.cpp">
-      <Filter>utility</Filter>
+    <ClCompile Include="..\..\..\math\prob\test\test_normal_pdf.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="utility\reverse.cpp">
-      <Filter>utility</Filter>
-    </ClCompile>
-    <ClCompile Include="utility\iota.cpp">
-      <Filter>utility</Filter>
+    <ClCompile Include="..\..\..\math\prob\test\test_prob.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

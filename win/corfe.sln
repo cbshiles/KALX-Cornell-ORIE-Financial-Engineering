@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "math", "math", "{27262AA5-4A2B-49B7-B3A5-DA4D8777319D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prob", "math\prob\prob.vcxproj", "{7960A63A-3D88-43A4-B359-0108BC4C82FF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stat", "math\stat\stat.vcxproj", "{25EB3CFE-7939-4783-9AE0-B423B1069A1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{77438563-9032-41A5-A88E-3DD1723AE3B8}"
+	ProjectSection(SolutionItems) = preProject
+		..\include\ensure.h = ..\include\ensure.h
+		..\include\timer.h = ..\include\timer.h
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7960A63A-3D88-43A4-B359-0108BC4C82FF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7960A63A-3D88-43A4-B359-0108BC4C82FF}.Debug|Win32.Build.0 = Debug|Win32
+		{7960A63A-3D88-43A4-B359-0108BC4C82FF}.Debug|x64.ActiveCfg = Debug|Win32
+		{7960A63A-3D88-43A4-B359-0108BC4C82FF}.Release|Win32.ActiveCfg = Release|Win32
+		{7960A63A-3D88-43A4-B359-0108BC4C82FF}.Release|Win32.Build.0 = Release|Win32
+		{7960A63A-3D88-43A4-B359-0108BC4C82FF}.Release|x64.ActiveCfg = Release|Win32
+		{25EB3CFE-7939-4783-9AE0-B423B1069A1C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{25EB3CFE-7939-4783-9AE0-B423B1069A1C}.Debug|Win32.Build.0 = Debug|Win32
+		{25EB3CFE-7939-4783-9AE0-B423B1069A1C}.Debug|x64.ActiveCfg = Debug|Win32
+		{25EB3CFE-7939-4783-9AE0-B423B1069A1C}.Release|Win32.ActiveCfg = Release|Win32
+		{25EB3CFE-7939-4783-9AE0-B423B1069A1C}.Release|Win32.Build.0 = Release|Win32
+		{25EB3CFE-7939-4783-9AE0-B423B1069A1C}.Release|x64.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7960A63A-3D88-43A4-B359-0108BC4C82FF} = {27262AA5-4A2B-49B7-B3A5-DA4D8777319D}
+		{25EB3CFE-7939-4783-9AE0-B423B1069A1C} = {27262AA5-4A2B-49B7-B3A5-DA4D8777319D}
+	EndGlobalSection
+EndGlobal
