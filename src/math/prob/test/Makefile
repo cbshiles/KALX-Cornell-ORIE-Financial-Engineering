@@ -2,13 +2,12 @@ include test.top
 
 # more stuff here
 
-# generated files
-GENS = test_normal_cdf.cpp test_normal_pdf.cpp
+.PHONY: data
+data:
+	test_normal_cdf.sh
+	test_normal_pdf.sh
 
 include test.bot
-
-foo:
-	echo $(SRCS)
 
 # r!make depends
 test_prob.o: test_prob.cpp
