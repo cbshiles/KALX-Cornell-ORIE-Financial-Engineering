@@ -85,14 +85,8 @@
     <ClInclude Include="..\..\..\math\prob\normal.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\math\prob\test\test_normal_cdf.cpp" />
-    <ClCompile Include="..\..\..\math\prob\test\test_normal_pdf.cpp">
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4305</DisableSpecificWarnings>
-    </ClCompile>
-    <ClCompile Include="..\..\..\math\prob\test\test_prob.cpp">
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </DisableSpecificWarnings>
-    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\prob\test\test_normal_inv.cpp" />
+    <ClCompile Include="..\..\..\src\math\prob\test\test_prob.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

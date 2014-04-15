@@ -1,0 +1,18 @@
+SRCS = $(wildcard *.cpp)
+OBJS = $(SRCS:.cpp=.o)
+
+all:: $(OBJS)
+	./$(PROJ)
+
+$(PROJ):: $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+.PHONY: clean
+clean::
+	-rm -f *.exe *.o
+
+.PHONY: depends
+depends:
+	@cc -MM $(CXXFLAGS) $(SRCS) | tail +1 \
+	| sed -e 's;c:;/c;' -e 's;'$(ROOT)';\$$\(ROOT\);g'
+

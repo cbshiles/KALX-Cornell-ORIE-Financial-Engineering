@@ -3,17 +3,18 @@
 TARGET=test_normal_pdf
 
 # table of pdf values
-bc -l > ${TARGET}.dat <<EoF
+bc -l normal.bc > ${TARGET}.dat <<EoF
+scale=50
 pi = 4*a(1)
 sqrt2pi = sqrt(2*pi)
 for (x = -8; x < 8; x += 0.01) {
-	print "{", x, ", ", e(-x*x/2)/sqrt2pi, "},\n"
+	y=e(-x*x/2)/sqrt2pi
+	print "{", x, ", ", man(y), "E", exp(y), "},\n"
 }
 EoF
 
 cat > ${TARGET}.cpp <<EoF
 // ${TARGET}.cpp - test normal::pdf
-#include <iostream>
 #include <limits>
 #include "../normal.h"
 

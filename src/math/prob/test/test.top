@@ -1,0 +1,8 @@
+PROJ_DIR = $(shell (cd ..; pwd))
+PROJ = test_$(notdir $(PROJ_DIR))
+CXXFLAGS = -Wall -std=c++11 -I$(ROOT)
+
+all:: $(PROJ)
+debug: CXXFLAGS += -g
+debug: all
+

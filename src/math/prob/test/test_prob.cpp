@@ -8,8 +8,8 @@ void test_normal_inv(void);
 int main()
 {
 	try {
-		test_normal_pdf();
-		test_normal_cdf();
+//		test_normal_pdf();
+//		test_normal_cdf();
 		test_normal_inv();
 	}
 	catch (const std::exception& ex) {

@@ -20,13 +20,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\math\prob\test\test_normal_cdf.cpp">
+    <ClCompile Include="..\..\..\src\math\prob\test\test_normal_inv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\math\prob\test\test_normal_pdf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\math\prob\test\test_prob.cpp">
+    <ClCompile Include="..\..\..\src\math\prob\test\test_prob.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
