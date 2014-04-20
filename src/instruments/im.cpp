@@ -1,3 +1,4 @@
+#include <cassert>
 #include <algorithm>
 #include <iostream>
 #include <memory>
@@ -5,6 +6,7 @@
 
 using namespace std;
 
+template<class P = double>
 class i {
 public:
 	template<typename I>
@@ -17,16 +19,18 @@ public:
 	i& operator=(i&&) noexcept = default;
 	~i() noexcept = default;
 
-	friend double price(const i& x)
+	template<typename M>
+	friend P value(const i& x, const M& m)
 	{
-		return x.i_->price_();
+		return m(x.i_);
 	}
 
 private:
 	// interface
 	struct in {
 		virtual ~in() = default;
-		virtual double price_() const = 0;
+		template<class M>
+		virtual P value_(const M&) const = 0;
 	};
 	// implementation
 	template<typename I>
@@ -34,9 +38,10 @@ private:
 		im(I&& x)
 			: x_(move(x))
 		{ }
-		double price_() const override
+		template<class M>
+		P value_(const M& m) const override
 		{
-			return price(x_);
+			return value(x_,m);
 		}
 	private:
 		I x_;
@@ -47,7 +52,8 @@ private:
 struct option {
 	double k, t;
 };
-double price(const option& o)
+template<class M>
+double value(const option& o, const M& m)
 {
 	return o.k + o.t;
 }
@@ -55,18 +61,20 @@ double price(const option& o)
 struct orward {
 	double f, t;
 };
-double price(const orward& o)
+template<class M>
+double value(const orward& o, const M& m)
 {
 	return o.f - o.t;
 }
-using portfolio = vector<i>;
+using portfolio = vector<i<double>>;
 
-double price(const portfolio& p)
+template<class M>
+double value(const portfolio& p, const M& m)
 {
 	double a(0);
 
 	for (const auto& i : p)
-		a += price(i);
+		a += value(i);
 
 	return a;
 }
@@ -74,11 +82,16 @@ double price(const portfolio& p)
 int main()
 {
 	portfolio p;
+	option o{3,4}, o2(o), o3;
+	o3 = o;
+	assert (o.k == 3 && o.t == 4);
+	assert (o2.k == 3 && o2.t == 4);
+	assert (o3.k == 3 && o3.t == 4);
 
-	p.push_back(option{1,2});
-	p.push_back(orward{1,2});
+	p.emplace_back(option{1,2});
+	p.emplace_back(orward{1,2});
 
-	cout << price(p) << endl;
+	cout << value(p) << endl;
 
 	return 0;
 }
